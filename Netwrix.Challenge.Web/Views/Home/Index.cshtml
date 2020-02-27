@@ -1,0 +1,58 @@
+﻿@model InvoiceSummaryViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .customer:hover {
+        background-color: darkgrey;
+    }
+    th {
+        border: 1px grey solid;
+    }
+    .right {
+        text-align: right;
+    }
+    .hr {
+        border-top: 1px grey solid;
+    }
+</style>
+
+<div class="text-center">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Recent Invoice</th>
+                <th>Recent Amount</th>
+                <th>Paid Sum</th>
+                <th>Outstanding Count</th>
+                <th>Outstanding Sum</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var customer in Model.Customers) {
+            <tr class="customer">
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td><a href="/home/address/@customer.Id">Address</a></td>
+                <td>@customer.MostRecentInvoiceReference</td>
+                <td class="right">£@customer.MostRecentInvoiceAmount</td>
+                <td>@customer.OutstandingInvoiceCount</td>
+                <td class="right">£@customer.OutstandingInvoiceSum</td>
+                <td class="right">£@customer.PaidInvoiceSum</td>
+            </tr>
+        }
+        <tr class="hr">
+            <td colspan="6"></td>
+            <td class="right">Paid Invoices:</td>
+            <td class="right">@Model.PaidInvoicesCount</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td class="right">Total:</td>
+            <td class="right">£@Model.PaidInvoicesSum</td>
+        </tr>
+    </table>
+</div>

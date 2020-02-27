@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Netwrix.Challenge.Business\Netwrix.Challenge.Business.csproj" />
+    <ProjectReference Include="..\Netwrix.Challenge.Data.Sql\Netwrix.Challenge.Data.Sql.csproj" />
+  </ItemGroup>
+
+</Project>
